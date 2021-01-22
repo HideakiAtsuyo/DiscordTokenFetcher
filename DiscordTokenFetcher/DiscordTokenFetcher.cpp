@@ -4,14 +4,6 @@
 #include <nlohmann/json.hpp>
 #include <cpr/cpr.h>
 
-
-static size_t w(void* b, size_t s, size_t n, void* p) {
-    std::string& t = *static_cast <std::string*> (p);
-    size_t ts = s * n;
-    t.append(static_cast <char*> (b), ts);
-    return ts;
-}
-
 void color(int fg, int bg) {
     HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(H, bg * 16 + fg);
